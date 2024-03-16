@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\SodaController;
+use App\Http\Controllers\Api\V1\BrandController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('/sodas', SodaController::class);
+    Route::apiResource('/brands', BrandController::class);
 });
 
 

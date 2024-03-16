@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSodaRequest extends StoreSodaRequest
+class StoreBrandRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +23,8 @@ class UpdateSodaRequest extends StoreSodaRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
-            'carbonated' => 'required|boolean',
-            'caffeinated' => 'required|boolean',
-            'brand_id' => 'required|exists:brands,id'
+            'founded_year' => 'nullable|integer|min:1900|max:' . date('Y'),
+            'country' => 'nullable|string|max:255'
         ];
     }
 }

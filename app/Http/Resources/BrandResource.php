@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SodaResource extends JsonResource
+class BrandResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +17,8 @@ class SodaResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'carbonated' => (bool) $this->carbonated,
-            'caffeinated' => (bool) $this->caffeinated,
-            'description' => $this->description,
-            'brand' => $this->brand ? $this->brand->name : null,
+            'founded_year' => $this->founded_year,
+            'country' => $this->country,
 
         ];
     }

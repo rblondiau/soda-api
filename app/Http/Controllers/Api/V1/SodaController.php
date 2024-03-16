@@ -19,9 +19,26 @@ class SodaController extends Controller
     public function index(Request $request)
     {
         $name = $request->query('name');
+        $brand = $request->query('brand');
 
-        // If 'name' parameter is provided, filter by name
-        $sodas = $name ? Soda::where('name', 'LIKE', '%' . $name . '%')->get() : Soda::all();
+        // Query builder with conditions for name and brand
+        $query = Soda::query();
+
+        if ($name && $brand) {
+            $query->where('name', 'LIKE', '%' . $name . '%')
+                ->whereHas('brand', function ($query) use ($brand) {
+                    $query->where('name', 'LIKE', '%' . $brand . '%');
+                });
+        } elseif ($name) {
+            $query->where('name', 'LIKE', '%' . $name . '%');
+        } elseif ($brand) {
+            $query->whereHas('brand', function ($query) use ($brand) {
+                $query->where('name', 'LIKE', '%' . $brand . '%');
+            });
+        }
+
+        // Execute the query
+        $sodas = $query->get();
 
         return SodaResource::collection($sodas);
     }
@@ -40,7 +57,8 @@ class SodaController extends Controller
      */
     public function store(StoreSodaRequest $request)
     {
-        //
+        $soda = Soda::create($request->validated());
+        return SodaResource::make($soda);
     }
 
     /**
@@ -64,7 +82,8 @@ class SodaController extends Controller
      */
     public function update(UpdateSodaRequest $request, Soda $soda)
     {
-        //
+        $soda->update($request->validated());
+        return SodaResource::make($soda);
     }
 
     /**
@@ -72,6 +91,7 @@ class SodaController extends Controller
      */
     public function destroy(Soda $soda)
     {
-        //
+        $soda->delete();
+        return response()->noContent();
     }
 }
