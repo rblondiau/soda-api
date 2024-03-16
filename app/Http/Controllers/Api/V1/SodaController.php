@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class SodaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * GET api/sodas
      */
 
     public function index(Request $request)
@@ -53,7 +53,7 @@ class SodaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * POST api/sodas
      */
     public function store(StoreSodaRequest $request)
     {
@@ -62,7 +62,7 @@ class SodaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * GET api/sodas by id
      */
     public function show(Soda $soda)
     {
@@ -78,7 +78,7 @@ class SodaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * PUT PATCH api/sodas
      */
     public function update(UpdateSodaRequest $request, Soda $soda)
     {
@@ -87,7 +87,7 @@ class SodaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * DELETE api/sodas
      */
     public function destroy(Soda $soda)
     {

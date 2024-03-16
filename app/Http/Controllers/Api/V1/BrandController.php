@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class BrandController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * GET api/brands
      */
 
     public function index(Request $request)
@@ -36,7 +36,7 @@ class BrandController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * POST api/brands
      */
     public function store(StoreBrandRequest $request)
     {
@@ -45,7 +45,7 @@ class BrandController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * GET api/brands by id
      */
     public function show(Brand $brand)
     {
@@ -61,7 +61,7 @@ class BrandController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * PUT PATCH api/brands
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
@@ -70,7 +70,7 @@ class BrandController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * DELETE api/brands
      */
     public function destroy(Brand $brand)
     { {
