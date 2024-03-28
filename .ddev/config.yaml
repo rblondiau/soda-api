@@ -7,8 +7,8 @@ xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
 database:
-    type: mariadb
-    version: "10.4"
+  type: mariadb
+  version: "10.4"
 use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
@@ -159,7 +159,7 @@ web_environment: []
 # This is not used by most people, most people use the *router* instead
 # of the localhost port.
 
-# host_db_port: "59002"
+host_db_port: "59000"
 # The host port binding for the ddev-dbserver can be explicitly specified. It is dynamic
 # unless explicitly specified.
 
